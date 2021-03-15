@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>주식 초보자를 위한 주식 가이드</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--부트스트랩 css 추가-->
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron" style="margin: 20px">
+            <h1 class="display-4" style="font-weight: bold">주식 초보자를 위한 주식 가이드 CodeDeploy</h1>
+            <p class="lead" style="font-weight: bold">LG CNS 2그룹</p>
+            <hr class="my-4">
+            <p>
+                <span>더 많은 회사의 정보를 보고 싶다면 회사를 추가하세요! &nbsp; &nbsp;</span>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#savePostsModal">회사 추가</button>
+            </p>
+        </div>
+
+        <div class="col-md-12">
+            <br/>
+            <table class="table ">
+                <thead class="thead-strong">
+                <tr>
+
+                    <th>회사</th>
+                    <th>현재가</th>
+                    <th>실시간 정보</th>
+                    <th>적정 주가</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                {{#each posts}}
+                    <tr>
+
+                        <td>{{title}}</td>
+                        <td>{{author}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onClick="location.href='stock?index={{content}}'">실시간 정보 보기</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" onClick="location.href='guide?index={{content}}'">적정주가 보기</button>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal 영역 -->
+    <div class="modal fade" id="savePostsModal" tabindex="-1" role="dialog" aria-labelledby="savePostsLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="savePostsLabel">회사 추가</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title">회사 이름</label>
+                            <input type="text" class="form-control" id="title" placeholder="회사 이름을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="content"> 회사 코드 </label>
+                            <textarea class="form-control" id="content" placeholder="해당 회사의 네이버 금융 코드를 입력하세요"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" id="btn-save">추가</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--부트스트랩 js, jquery 추가-->
+    <script src="/js/lib/jquery.min.js"></script>
+    <script src="/js/lib/bootstrap.min.js"></script>
+
+    <!--custom js 추가-->
+    <script src="/js/app/main.js"></script>
+
+</body>
+</html>
